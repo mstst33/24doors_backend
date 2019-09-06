@@ -2,12 +2,12 @@ var express = require('express');
 var router = express.Router();
 const main_db = require('../private/DB/main_db');
 
-console.log('Loading user ..');
+console.log('Loading estate ..');
 
-// backend API about User
+// backend API about Estate
 
 /*
-* Description: Register user
+* Description: Register estate
 * Function: Write user data into DB
 * TransferType: POST
 * Input Value:
@@ -15,8 +15,8 @@ console.log('Loading user ..');
 * Return Value:
   ...
 */
-router.post('/register_user', function(req, res, next) {
-  res.send('success to register user');
+router.post('/register_estate', function(req, res, next) {
+  res.send('success to register estate');
 });
 
 module.exports = router;
