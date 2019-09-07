@@ -3,8 +3,8 @@ var router = express.Router();
 var auth = require('../auth');
 
 // GET login page
-router.get('/login', function(request, response) {
-  response.render('login', { user: request.user });
+router.get('/login', (req, res) => {
+  res.render('login', { user: req.user });
 });
 
 // GET route for when you click on login - passport authenticates through google
@@ -16,23 +16,23 @@ router.get('/auth/google/callback',
   auth.passport.authenticate('google', {
     failureRedirect: '/login'
   }),
-  function(request, response) {
+  (req, res) => {
     // Authenticated successfully
-    response.redirect('/');
+    res.redirect('/');
   });
 
 // GET logout route - will sign person out of session
-router.get('/logout', function(request, response) {
-  request.logout();
-  response.redirect('/');
+router.get('/logout', (req, res) => {
+  req.logout();
+  res.redirect('/');
 });
 
 // Route middleware to ensure user is authenticated.
-function ensureAuthenticated(request, response, next) {
-  if (request.isAuthenticated()) {
+ const ensureAuthenticated = (req, res, next) => {
+  if (req.isAuthenticated()) {
     return next();
   }
-  response.redirect('/login');
+  res.redirect('/login');
 }
 
 module.exports = router;
