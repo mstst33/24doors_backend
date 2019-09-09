@@ -13,6 +13,9 @@ Link: [node_modules v1.2](https://drive.google.com/open?id=12qxVefuM8GNbMzfB_5EL
 * knex<br/>
 * pg<br/>
 * fs<br/>
+* dotenv<br/>
+* passport<br/>
+* passport-google-oauth<br/>
 
 ### backend API
 

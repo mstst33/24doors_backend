@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const main_db = require('../private/DB/main_db');
+const main_db = require('../db/main_db');
 
 console.log('Loading estate ..');
 

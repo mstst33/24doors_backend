@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var path = require('path');
 var fs = require('fs');
-const main_db = require('../private/DB/main_db');
+const main_db = require('../db/main_db');
 
 var dirsql = './private/sql';
 console.log('Create table from: ', dirsql);
