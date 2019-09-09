@@ -1,22 +1,38 @@
 var express = require('express');
 var router = express.Router();
-const main_db = require('../private/DB/main_db');
+var auth = require('../auth');
 
-console.log('Loading user ..');
-
-// backend API about User
-
-/*
-* Description: Register user
-* Function: Write user data into DB
-* TransferType: POST
-* Input Value:
-  ...
-* Return Value:
-  ...
-*/
-router.post('/register_user', function(req, res, next) {
-  res.send('success to register user');
+// GET login page
+router.get('/login', (req, res) => {
+  res.render('login', { user: req.user });
 });
+
+// GET route for when you click on login - passport authenticates through google
+router.get('/auth/google',
+  auth.passport.authenticate('google', { scope: ['openid email profile'] }));
+
+// If successful auth - redirects to home page, if not - redirects to /login
+router.get('/auth/google/callback',
+  auth.passport.authenticate('google', {
+    failureRedirect: '/login'
+  }),
+  (req, res) => {
+    // Authenticated successfully
+    res.redirect('/');
+  });
+
+// GET logout route - will sign person out of session
+router.get('/logout', (req, res) => {
+  req.logout();
+  res.redirect('/');
+});
+
+// Route middleware to ensure user is authenticated.
+ const ensureAuthenticated = (req, res, next) => {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  res.redirect('/login');
+}
 
 module.exports = router;
