@@ -10,7 +10,7 @@ var router = express.Router();
 * Return Value:
     ...
 */
-router.post('/register_work', function(req, res, next) {
+router.post('/register_work', (req, res, next) => {
   res.send('success to register work');
 });
 
