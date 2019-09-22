@@ -1,13 +1,13 @@
-const knex = require('knex');
-const main_db = knex({
-  client: 'pg',
-  connection:
-  {
-    host : 'localhost', // public: 99.79.177.225, internal: 172.26.14.106
-    user : 'postgres',
-    password : 'postgres',
-    database : 'postgres'
-  }
-});
+require('dotenv').config();
+
+var environment = process.env.NODE_ENV || 'development';
+var db_config = require('./knex.js')[environment];
+
+console.log('NODE_ENV: ', environment);
+console.log('HOST: ', db_config.connection.host);
+
+// Set DB to connect
+db_config.connection.database = process.env.DB_POSTGRES_NAME;
+const main_db = require('knex')(db_config);
 
 module.exports = main_db;

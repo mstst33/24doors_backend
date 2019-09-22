@@ -17,16 +17,6 @@ console.log('Loading work ..');
 */
 router.post('/register_work', (req, res, next) => {
   res.send('success to register work');
-  main_db.insert({ id: 1 })
-  .into('Test')
-  .then(function(data)
-  {
-    console.log('Data: ', data);
-  })
-  .catch(function(err)
-  {
-    console.log(err);
-  });
 });
 
 module.exports = router;

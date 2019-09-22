@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var auth = require('../auth');
+var oauth = require('../oauth/google_oauth');
 
 // GET login page
 router.get('/login', (req, res) => {
@@ -9,11 +9,11 @@ router.get('/login', (req, res) => {
 
 // GET route for when you click on login - passport authenticates through google
 router.get('/auth/google',
-  auth.passport.authenticate('google', { scope: ['openid email profile'] }));
+  oauth.passport.authenticate('google', { scope: ['openid email profile'] }));
 
 // If successful auth - redirects to home page, if not - redirects to /login
 router.get('/auth/google/callback',
-  auth.passport.authenticate('google', {
+  oauth.passport.authenticate('google', {
     failureRedirect: '/login'
   }),
   (req, res) => {
