@@ -1,5 +1,10 @@
 var express = require('express');
 var router = express.Router();
+const main_db = require('../db/main_db');
+
+console.log('Loading work ..');
+
+// backend API about Work
 
 /*
 * Description: Register work

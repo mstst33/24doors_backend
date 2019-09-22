@@ -10,6 +10,8 @@ var session = require('express-session')
 var indexRouter = require('./routes/index');
 var userRouter = require('./routes/user');
 var workRouter = require('./routes/work');
+var estateRouter = require('./routes/estate');
+// var create_tbRouter = require('./routes/create_tb');
 
 var app = express();
 
@@ -35,6 +37,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/user', userRouter);
 app.use('/work', workRouter);
+app.use('/estate', estateRouter);
+
+// Only use for creating DB
+// app.use('/create_tb', create_tbRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

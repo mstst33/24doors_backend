@@ -12,10 +12,12 @@
     "ejs": "~2.6.1",
     "express": "~4.16.1",
     "express-session": "^1.16.2",
+    "fs": "0.0.1-security",
     "http-errors": "~1.6.3",
     "knex": "^0.19.3",
     "morgan": "~1.9.1",
     "passport": "^0.4.0",
-    "passport-google-oauth": "^2.0.0"
+    "passport-google-oauth": "^2.0.0",
+    "pg": "^7.12.1"
   }
 }
